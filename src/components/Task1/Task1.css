@@ -1,0 +1,58 @@
+.cont{
+  height :90vh;
+  display: flex;
+  justify-content: center;
+    align-items: center;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .col {
+    font-size: 18px;
+    width : 190px;
+    height: 250px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+   
+  }
+  .buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0px solid black;
+    
+  }
+  .btn{
+    font-size: 17px;
+    border-radius: 5px;
+    width: 150px;
+    background-color: rgb(221, 240, 228);
+    padding: 5px 10px 8px 10px;
+    border: 0px solid black;
+    margin: 15px 0 15px 0;
+  }
+  .list-group-item{
+    font-size: 20px;
+    padding: 0 0 8px 0;
+
+  }
+  h3{
+    font-size: 20px;
+    margin: 0 0 8px 0;
+  }
+
+  .highlighted {
+    background-color: #79e663;
+  }
+  
+  input[type='checkbox'] {
+    display: none;
+  }
+  
+
+  /* 7549 239 4.39 */

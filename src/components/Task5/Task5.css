@@ -1,0 +1,46 @@
+  .main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .wrapper {
+    width: 350px;
+    height: 350px;
+    border: 2px solid black;
+  }
+  
+  .squareWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .Square1 {
+    width: calc(50% - 1px);
+    height: calc(50% - 1px);
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+  }
+  
+  .Square2 {
+    width: calc(50% - 1px);
+    height: calc(50% - 1px);
+    border-bottom: 2px solid black;
+  }
+  
+  .Square3 {
+    width: calc(50% - 1px);
+    height: calc(50% - 1px);
+    border-right: 2px solid black;
+  }
+  
+  .Square4 {
+    width: calc(50% - 1px);
+    height: calc(50% - 1px);
+  }
+  
