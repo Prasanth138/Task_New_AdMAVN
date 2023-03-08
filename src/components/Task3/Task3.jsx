@@ -11,13 +11,13 @@ const style = {
 };
 
 const App = () => {
-  const [items, setItems] = useState(Array.from({ length: 20 }));
+  const [items, setItems] = useState(Array.from({ length: 200 }));
 
   const fetchMoreData = () => {
     // a fake async api call like which sends
     // 50 more records in 0.5 secs
     setTimeout(() => {
-      setItems(items.concat(Array.from({ length: 20 })));
+      setItems(items.concat(Array.from({ length: 50 })));
     }, 500);
   };
 
