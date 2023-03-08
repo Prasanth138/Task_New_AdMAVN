@@ -103,3 +103,7 @@
     .subfolders {
     display: none;
     }
+    .open {
+      background-color: #a7fafa;
+    }
+    
