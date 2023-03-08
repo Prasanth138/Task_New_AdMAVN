@@ -1,24 +1,3 @@
-// import React from 'react';
-// import { FaFolder, FaFolderOpen } from 'react-icons/fa';
-
-// function FoldersColumn({ folders, onFolderClick }) {
-//   return (
-//     <div className="column">
-//       {folders.map((folder) => (
-//         <div className="folder" key={folder.name} onClick={() => onFolderClick(folder)}>
-//           {folder.subfolders.length > 0 ? 
-//             <div className="arrow-container"><FaFolderOpen className="folder-icon" /></div> 
-//             : 
-//             <div className="arrow-container"><FaFolder className="folder-icon" /></div>}
-//           <span>{folder.name}</span>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default FoldersColumn;
-
 import React, { useState } from 'react';
 import { FaFolder, FaFolderOpen } from 'react-icons/fa';
 
