@@ -81,11 +81,11 @@ function App() {
         {grandchildFolder && <FilesColumn files={grandchildFolder.files} />}
       </div>
       </div>
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+      {/* <div style={{ textAlign: 'center', marginTop: '20px' }}>
         {grandchildFolder && (
           <button onClick={resetFolders}>Back to Top Level</button>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
