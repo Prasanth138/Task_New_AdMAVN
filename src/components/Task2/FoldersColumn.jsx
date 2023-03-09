@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaFolder, FaFolderOpen } from 'react-icons/fa';
+import './Task2.css';
 
 function FoldersColumn({ folders, selectedFolder, onFolderClick, isOpen }) {
   const [openFolders, setOpenFolders] = useState([]);
@@ -17,30 +18,24 @@ function FoldersColumn({ folders, selectedFolder, onFolderClick, isOpen }) {
     } else {
       setCurrentFolder(folder);
     }
-    onFolderClick(folder);
+    onFolderClick(folder); // call onFolderClick with clicked folder
   };
 
   return (
     <div className="column">
       {folders.map((folder) => (
         <div
-          className={`folder ${openFolders.includes(folder) ? 'open' : ''}`}
+          className={`folder ${openFolders.includes(folder) ? 'open' : ''} ${folder === selectedFolder ? 'selected' : ''}`}
           key={folder.name}
           onClick={() => handleFolderClick(folder)}
         >
-          {folder.subfolders.length > 0 ? (
-            <div className="arrow-container">
-              {openFolders.includes(folder) ? (
-                <FaFolderOpen className="folder-icon" />
-              ) : (
-                <FaFolder className="folder-icon" />
-              )}
-            </div>
-          ) : (
-            <div className="arrow-container">
+          <div className="arrow-container">
+            {folder.subfolders.length > 0 ? (
+              openFolders.includes(folder) ? <FaFolderOpen className="folder-icon" /> : <FaFolder className="folder-icon" />
+            ) : (
               <FaFolder className="folder-icon" />
-            </div>
-          )}
+            )}
+          </div>
           <span>{folder.name}</span>
           {folder.subfolders.length > 0 && (
             <div className={openFolders.includes(folder) ? 'arrow-down' : 'arrow-right'}></div>

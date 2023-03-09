@@ -2,32 +2,53 @@ import React, { useState } from 'react';
 import './Task2.css';
 import FoldersColumn from './FoldersColumn';
 import FilesColumn from './FilesColumn';
-import { FaArrowRight, FaArrowDown } from 'react-icons/fa';
 
 function App() {
   const [parentFolder, setParentFolder] = useState(null);
   const [childFolder, setChildFolder] = useState(null);
   const [grandchildFolder, setGrandchildFolder] = useState(null);
-  const [isOpen, setIsOpen] = useState(true);
+  const [selectedFolder, setSelectedFolder] = useState(null);
 
   const handleParentClick = (folder) => {
-    setParentFolder(folder);
-    setChildFolder(null);
-    setIsOpen(!isOpen);
-    console.log(isOpen)
-    setGrandchildFolder(null);
+    if (selectedFolder === folder) {
+      setSelectedFolder(null);
+      setParentFolder(null);
+      setChildFolder(null);
+      setGrandchildFolder(null);
+    } else {
+      setSelectedFolder(folder);
+      setParentFolder(folder);
+      setChildFolder(null);
+      setGrandchildFolder(null);
+    }
   };
 
   const handleChildClick = (folder) => {
-    setChildFolder(folder);
-    setGrandchildFolder(null);
+    if (selectedFolder === folder) {
+      setSelectedFolder(parentFolder);
+      setChildFolder(null);
+      setGrandchildFolder(null);
+    } else {
+      setSelectedFolder(folder);
+      setChildFolder(folder);
+      setGrandchildFolder(null);
+    }
   };
 
   const handleGrandchildClick = (folder) => {
-    setGrandchildFolder(folder);
+    if (selectedFolder === folder) {
+      setSelectedFolder(childFolder);
+      setGrandchildFolder(null);
+    } else {
+      setSelectedFolder(folder);
+      setGrandchildFolder(folder);
+    }
+    // setSelectedFolder(folder);
+    // setGrandchildFolder(folder);
   };
 
   const resetFolders = () => {
+    setSelectedFolder(null);
     setParentFolder(null);
     setChildFolder(null);
     setGrandchildFolder(null);
@@ -41,24 +62,20 @@ function App() {
         <FoldersColumn
           folders={folders}
           onFolderClick={handleParentClick}
-          isOpen={isOpen}
-          arrowIcon={<FaArrowRight />}
-          activeArrowIcon={<FaArrowDown />}
+          selectedFolder={selectedFolder}
         />
         {parentFolder && (
           <FoldersColumn
             folders={parentFolder.subfolders}
             onFolderClick={handleChildClick}
-            arrowIcon={<FaArrowRight />}
-            activeArrowIcon={<FaArrowDown />}
+            selectedFolder={selectedFolder}
           />
         )}
         {childFolder && (
           <FoldersColumn
             folders={childFolder.subfolders}
             onFolderClick={handleGrandchildClick}
-            arrowIcon={<FaArrowRight />}
-            activeArrowIcon={<FaArrowDown />}
+            selectedFolder={selectedFolder}
           />
         )}
         {grandchildFolder && <FilesColumn files={grandchildFolder.files} />}
@@ -119,14 +136,63 @@ const folders = [
                    files: [] }],
     files: ['File 2.1.1'],
   },
+  {
+    name: 'Folder 3',
+    subfolders: [
+      {
+        name: 'Folder 3.1',
+        subfolders: [
+          {
+            name: 'Folder 3.1.1',
+            subfolders: [
+              {
+                name: 'Folder 3.1.1',
+                subfolders: [],
+                files: ['File 3.1.1.1']
+              }
+            ],
+            files: ['File 3.1.1.1']
+          },
+          {
+            name: 'Folder 3.1.2',
+            subfolders: [
+              {
+                name: 'Folder 3.1.1',
+                subfolders: [],
+                files: ['File 3.1.2.1']
+              }
+            ],
+            files: ['File 3.1.2.1']
+          }
+        ],
+        files: []
+      },
+      {
+        name: 'Folder 3.2',
+        subfolders: [
+          {
+            name: 'Folder 3.2.1',
+            subfolders: [
+              {
+                name: 'Folder 3.2.1',
+                subfolders: [
+              {
+                name: 'Folder 3.2.1.1',
+                subfolders: [],
+                files: ['File 3.2.1.1']
+              }
+            ],
+            files: ['File 3.2.1.1']
+              }
+            ],
+            files: []
+          }
+        ],
+        files: ['File 3.2.1']
+      }
+    ],
+    files: ['File 3.1', 'File 3.2']
+  },
 ];
 
 export default App;
-
-
-
-
-
-
-
-
